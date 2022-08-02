@@ -1,0 +1,192 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+ul {
+    list-style: none;
+    display: flex;
+}
+
+.wrapper {
+}
+.container {
+}
+.todo {
+    width: 500px;
+    background-color: rgb(70, 70, 80);
+    border-radius: 6px;
+    padding-bottom: 50px;
+}
+.main-content {
+    padding: 0 55px;
+}
+.header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-bottom: 1px solid #313131;
+}
+
+.time {
+    padding: 0 14px;
+    color: rgb(185, 185, 185);
+    text-transform: capitalize;
+    cursor: pointer;
+    line-height: 45px;
+}
+.time.active {
+    color: #fff;
+    border-bottom: 3px solid pink;
+}
+.date {
+    margin-top: 45px;
+    display: flex;
+    justify-content: center;
+}
+.arrow svg{
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 30px;
+    color: #60606e;
+    cursor: pointer;
+}
+.prev {
+    margin-right: 20px;
+}
+.next {
+    margin-left: 20px;
+}
+.text-box {
+    text-align: center;
+}
+.text-box p{
+    font-size: 26px;
+    color: #fff;
+    font-weight: 500;
+}
+.text-box span {
+    font-size: 16px;
+    color: rgb(175, 175, 175);
+    font-weight: 300;
+}
+.add-a-task {
+    margin-top: 35px;
+    position: relative;
+}
+.add-a-task svg {
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+.add-a-task svg path {
+    fill: #d6d6d6;
+}
+.add-a-task input {
+    background-color: rgb(80, 80, 94);
+    border: 1px solid rgb(54, 50, 50);
+    outline: none;
+    width: 100%;
+    border-radius: 5px;
+    color: #d6d6d6;
+    padding: 8px 32px;
+    font-size: 11px;
+}
+.add-a-task input::placeholder {
+    color: #d6d6d6;
+}
+.todo-list {
+    margin-top: 15px;
+    display: flex;
+    flex-direction: column;
+}
+.todo-item {
+    display: flex;
+    width: 100%;
+    margin-bottom: 20px
+}
+.todo-item input{
+    background-color: #60606e;
+    border-radius: 3px;
+    height: 13px;
+    width: 13px;
+    border: 1px solid #333;
+    margin-top: 4px;
+}
+.content {
+    margin-left: 10px;
+}
+.content p{
+    font-size: 13px;
+    color: #fff;
+}
+.content span{
+    color: #d6d6d6;
+    font-size: 10px;
+}
+
+.dropdown-menu {
+    margin-left: auto;
+    border: none;
+    appearance: none;
+    background: url('https://api.iconify.design/bx/dots-horizontal-rounded.svg?color=%23d6d6d6&width=20&height=35') no-repeat top;
+    width: 20px;
+    margin-top: -6px;
+    outline: none;
+    position: relative;
+    cursor: pointer;
+}
+.select {
+    position: absolute;
+    top: 35px;
+    left: -124px;
+    width: 150px;
+    display: flex;
+    flex-direction: column;
+    font-size: 12px;
+    color: #fafafa;
+    gap: 5px;
+    background: #383644;
+    border-radius: 5px;
+    padding: 8px 10px;
+    box-shadow: 0 0 5px #333;
+    z-index: 999;
+}
+.select::after {
+    content: '';
+    position: absolute;
+    top: -5px;
+    right: 8px;
+    height: 15px;
+    width: 15px;
+    transform: rotate(45deg);
+    background: #383644;
+}
+.select.close {
+    display: none;
+}
+
+.option {
+    display: flex;
+    align-items: center;
+}
+
+.option svg {
+    font-size: 12px;
+    margin-right: 8px;
+    width: 12px;
+    height: 12px;
+}
