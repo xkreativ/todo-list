@@ -4,10 +4,15 @@ const dropdownMenus = document.querySelectorAll('.dropdown-menu');
 let flag = false;
 let flagOpenMemo = false;
 
-// изменение состояния выпадающего меню
 todo.addEventListener('click', function(e) {
     let target = e.target || e.srcElement;
 
+    // функция удаления элемента
+    function removeElement(element) {
+        target.closest(element).remove();
+    }
+
+    // изменение состояния выпадающего меню
     if(target.className == 'dropdown-menu') {
         dropdownMenus.forEach(element => {
             if (element != target) {
@@ -24,13 +29,13 @@ todo.addEventListener('click', function(e) {
             flag = false;
         }
     }
-    // работа элементов выпадающего меню
-    // кнопка удалить
+    // 1 работа элементов выпадающего меню
+    // 1.1 кнопка удалить
     if(target.closest('.option.delete')) {
-        target.closest('.todo-item').remove();
+        removeElement('.todo-item');
     } 
 
-    // кнопка создать поле
+    // 1.2 кнопка создать поле
     if(target.closest('.option.add')) {
         if(flagOpenMemo == false) {
             target.closest('.todo-item')
@@ -46,13 +51,13 @@ todo.addEventListener('click', function(e) {
         }
     }
 
-    // управление кнопками memo
-    // кнопка скрыть
+    // 2 управление кнопками memo
+    // 2.1 кнопка скрыть
     if(target.className == 'btn hide') {
-        target.closest('.add-a-memo').remove();
+        removeElement('.add-a-memo');
         flagOpenMemo = false;
     }
-    //кнопка добавить
+    // 2.2 кнопка добавить
     if(target.className == 'btn add') {
         
     }
@@ -112,24 +117,26 @@ document.addEventListener('keydown', function(event) {
         if(input.value != '') {
             todoList.insertAdjacentHTML('beforeend',
             `<li class="todo-item">
-                <input type="checkbox" name="" id="">
-                <div class="content">
-                    <p>${input.value}</p>
-                    <span></span>
-                </div>
-                <div class="dropdown-menu">
-                    <div class="select close">
-                        <div class="option fix">
-                            <span class="iconify" data-icon="radix-icons:drawing-pin-filled" style="color: #d6d6d6;" data-width="20" data-height="35"></span>
-                            <span>Pin on the top</span>
-                        </div>
-                        <div class="option add">
-                            <span class="iconify" data-icon="akar-icons:paper"></span>
-                            <span>Add a memo</span>
-                        </div>
-                        <div class="option delete">
-                            <span class="iconify" data-icon="bxs:trash"></span>
-                            <span>Delete</span>
+                <div class="todo-item-wrapper">
+                    <input type="checkbox" name="" id="" title="Отметить как: задание выполнено">
+                    <div class="content">
+                        <p>${input.value}</p>
+                        <span></span>
+                    </div>
+                    <div class="dropdown-menu">
+                        <div class="select close">
+                            <div class="option fix">
+                                <span class="iconify" data-icon="radix-icons:drawing-pin-filled" style="color: #d6d6d6;" data-width="20" data-height="35"></span>
+                                <span>Pin on the top</span>
+                            </div>
+                            <div class="option add">
+                                <span class="iconify" data-icon="akar-icons:paper"></span>
+                                <span>Add a memo</span>
+                            </div>
+                            <div class="option delete">
+                                <span class="iconify" data-icon="bxs:trash"></span>
+                                <span>Delete</span>
+                            </div>
                         </div>
                     </div>
                 </div>
