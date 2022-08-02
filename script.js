@@ -2,6 +2,7 @@ const todo = document.querySelector('.todo');
 const todoList = document.querySelector('.todo-list');
 const dropdownMenus = document.querySelectorAll('.dropdown-menu');
 let flag = false;
+let flagOpenMemo = false;
 
 // изменение состояния выпадающего меню
 todo.addEventListener('click', function(e) {
@@ -24,9 +25,37 @@ todo.addEventListener('click', function(e) {
         }
     }
     // работа элементов выпадающего меню
+    // кнопка удалить
     if(target.closest('.option.delete')) {
         target.closest('.todo-item').remove();
     } 
+
+    // кнопка создать поле
+    if(target.closest('.option.add')) {
+        if(flagOpenMemo == false) {
+            target.closest('.todo-item')
+            .querySelector('.content').insertAdjacentHTML('beforeend', `
+            <div class="add-a-memo">
+                <textarea class="memo" name="memo" id="" cols="30" rows="10" placeholder="Type the text"></textarea>
+                <div class="btn-add-memo">
+                    <button class="btn hide">hide</button>
+                    <button class="btn add">add a memo</button>
+                </div>
+            </div>`);
+            flagOpenMemo = true;
+        }
+    }
+
+    // управление кнопками memo
+    // кнопка скрыть
+    if(target.className == 'btn hide') {
+        target.closest('.add-a-memo').remove();
+        flagOpenMemo = false;
+    }
+    //кнопка добавить
+    if(target.className == 'btn add') {
+        
+    }
 });
 
 // получение дат
@@ -81,7 +110,7 @@ const input = document.querySelector('.add-a-task input');
 document.addEventListener('keydown', function(event) {
     if (event.code == 'Enter' && input == document.activeElement) {
         if(input.value != '') {
-            todoList.insertAdjacentHTML('afterend',
+            todoList.insertAdjacentHTML('beforeend',
             `<li class="todo-item">
                 <input type="checkbox" name="" id="">
                 <div class="content">
